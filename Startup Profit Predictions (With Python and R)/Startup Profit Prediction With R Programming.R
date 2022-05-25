@@ -24,6 +24,14 @@ split = sample.split(dataset$Profit, SplitRatio = 0.8)
 training_set = subset(dataset, split==TRUE)
 test_set = subset(dataset, split == FALSE)
 
-#
+# fitting the dataset on Linear Regression
 
+regressor = lm(Profit~.,
+               data = training_set)
 
+# Making predictions
+
+y_pred = predict(regressor,
+                 newdata = test_set)
+
+print(y_pred)
